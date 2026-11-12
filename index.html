@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ketik. | Latihan mengetik cepat dan tepat</title>
+  <meta name="description" content="Latihan mengetik cepat dan tepat dalam bahasa Indonesia dan Inggris, dengan batas waktu dan skor akhir.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <a class="mark" href="./">ketik<span>.</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button class="key small" data-lang="id" type="button">ID</button>
+        <button class="key small" data-lang="en" type="button">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="controls">
+        <div class="durations" role="group" aria-labelledby="dur-label">
+          <span id="dur-label" class="ctl-label" data-i18n="duration">Durasi</span>
+          <button class="key" data-dur="15" type="button">15<small>s</small></button>
+          <button class="key" data-dur="30" type="button">30<small>s</small></button>
+          <button class="key" data-dur="60" type="button">60<small>s</small></button>
+          <button class="key" data-dur="120" type="button">120<small>s</small></button>
+        </div>
+        <button class="key" id="restart" type="button"><span data-i18n="restart">Ulangi</span> <kbd>Esc</kbd></button>
+      </section>
+
+      <section class="live" aria-live="off">
+        <div class="clock"><span id="time">30</span><small data-i18n="secLeft">detik tersisa</small></div>
+        <dl class="mini">
+          <div><dt data-i18n="wpm">kata/menit</dt><dd id="live-wpm">0</dd></div>
+          <div><dt data-i18n="accuracy">akurasi</dt><dd id="live-acc">100%</dd></div>
+          <div><dt data-i18n="typos">typo</dt><dd id="live-typo">0</dd></div>
+        </dl>
+      </section>
+
+      <section class="box" id="box">
+        <div class="viewport" id="viewport">
+          <div class="words" id="words" aria-hidden="true"></div>
+        </div>
+        <input id="input" class="trap" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Ketik di sini">
+        <div class="hint" id="hint" data-i18n="clickToFocus">Klik di sini, lalu mulai mengetik. Waktu berjalan saat huruf pertama diketik.</div>
+      </section>
+
+      <section class="result" id="result" hidden>
+        <div class="score">
+          <span class="score-label" data-i18n="score">Skor akhir</span>
+          <span class="score-num" id="r-score">0</span>
+          <span class="score-rank" id="r-rank"></span>
+        </div>
+        <dl class="grid">
+          <div><dt data-i18n="netWpm">Kecepatan bersih</dt><dd><span id="r-wpm">0</span> <small data-i18n="wpm">kata/menit</small></dd></div>
+          <div><dt data-i18n="rawWpm">Kecepatan kotor</dt><dd><span id="r-raw">0</span> <small data-i18n="wpm">kata/menit</small></dd></div>
+          <div><dt data-i18n="accuracy">akurasi</dt><dd id="r-acc">0%</dd></div>
+          <div><dt data-i18n="typosTotal">Total typo</dt><dd id="r-typo">0</dd></div>
+          <div><dt data-i18n="uncorrected">Typo tidak diperbaiki</dt><dd id="r-left">0</dd></div>
+          <div><dt data-i18n="best">Rekor kamu</dt><dd id="r-best">0</dd></div>
+        </dl>
+        <p class="formula" data-i18n="formula">Skor = kecepatan bersih × akurasi. Kecepatan bersih hanya menghitung huruf yang benar. Akurasi turun setiap kali kamu salah tekan, walau sudah dihapus.</p>
+        <button class="key accent" id="again" type="button"><span data-i18n="tryAgain">Coba lagi</span> <kbd>Esc</kbd></button>
+      </section>
+    </main>
+
+    <footer class="foot" data-i18n="footer">Tekan Esc kapan saja untuk mengulang. Satu kata dihitung 5 huruf.</footer>
+  </div>
+
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
